@@ -19,15 +19,12 @@ float media_harmonica(float a, float b, float c) {
 int main() {
     float a, b, c;
     
-    printf("Digite o primeiro número: ");
+    printf("Digite o primeiro valor: ");
     scanf("%f", &a);
-    
-    printf("Digite o segundo número: ");
+    printf("Digite o segundo valor: ");
     scanf("%f", &b);
-    
-    printf("Digite o terceiro número: ");
+    printf("Digite o terceiro valor: ");
     scanf("%f", &c);
-    
     printf("A média aritmética é: %.2f\n", media_aritmetica(a, b, c));
     printf("A média geométrica é: %.2f\n", media_geometrica(a, b, c));
     printf("A média harmônica é: %.2f\n", media_harmonica(a, b, c));
