@@ -1,10 +1,10 @@
 ; Dupla: Lucas de Araújo Santos Oliveira e Matheus Nascimento de Almeida
 
 section .data
-str1   db  "Digite primeira a altura: ",10,0
-str2   db  "Digite segunda a altura: ",10,0
-str3   db  "Digite terceira a altura: ",10,0
-str4   db  "Digite quarta a altura: ",10,0
+str1   db  "Digite a primeira altura: ",10,0
+str2   db  "Digite a segunda altura: ",10,0
+str3   db  "Digite a terceira altura: ",10,0
+str4   db  "Digite a quarta altura: ",10,0
 str5   db  "A média é %.2f",10,0
 
 fmt  db  "%lf"
