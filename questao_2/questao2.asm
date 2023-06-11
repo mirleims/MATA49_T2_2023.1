@@ -8,6 +8,7 @@ section .text
 extern media_aritmetica
 extern media_geometrica
 extern media_harmonica
+extern exit
 
     ;funcao media_aritmetica
     movss xmm0, dword [rsp+8]   
@@ -29,7 +30,8 @@ extern media_harmonica
     movss xmm2, dword [rsp+16]  
     call media_harmonica
       
-    ret
+    mov eax, 0  
+    call exit
     
     
     ; ----------------------------- EXPLICANDO O CÓDIGO ---------------------------------------
