@@ -25,7 +25,8 @@ int main() {
     scanf("%f", &b);
     printf("Digite o terceiro valor: ");
     scanf("%f", &c);
-    printf("A média aritmética é: %.2f\n", media_aritmetica(a, b, c));
+    printf("\nDado os valores: %.2f %.2f %.2f", a, b, c);
+    printf("\nA média aritmética é: %.2f\n", media_aritmetica(a, b, c));
     printf("A média geométrica é: %.2f\n", media_geometrica(a, b, c));
     printf("A média harmônica é: %.2f\n", media_harmonica(a, b, c));
     
