@@ -9,8 +9,8 @@
 
 section .data
   ; Mensagem inicial
-	mensagem db 'Insira a coordenada para os pontos A, B e C: ', 10
-	tam equ $-mensagem
+  mensagem db 'Insira a coordenada para os pontos A, B e C: ', 10
+  tam equ $-mensagem
 
   ; Mensagens para leitura das coordenadas
   msg_A db 'Coordenada A', 10
@@ -48,30 +48,30 @@ section .bss
   y3 resq 1
 
 section .text
-	global _start
+  global _start
 
 _start:
   ; Imprimir mensagem inicial
-	mov rax, 1
-	mov rdi, 1
-	mov rsi, mensagem
-	mov rdx, tam
-	syscall
+  mov rax, 1
+  mov rdi, 1
+  mov rsi, mensagem
+  mov rdx, tam
+  syscall
 
   mov rax, 1
-	mov rdi, 1
-	mov rsi, nova_linha
-	mov rdx, 1
-	syscall
+  mov rdi, 1
+  mov rsi, nova_linha
+  mov rdx, 1
+  syscall
 
   ; Imprime mensagem e lê coordenadas do ponto A
   mov rax, 1
-	mov rdi, 1
-	mov rsi, msg_A
-	mov rdx, tam_A
-	syscall
+  mov rdi, 1
+  mov rsi, msg_A
+  mov rdx, tam_A
+  syscall
 
-	mov rax, 0
+  mov rax, 0
   mov rdi, 0
   mov rsi, x1
   mov rdx, 8
@@ -83,18 +83,18 @@ _start:
   mov rdx, 8
   syscall
 
-	mov rax, 1
-	mov rdi, 1
-	mov rsi, nova_linha
-	mov rdx, 1
-	syscall
+  mov rax, 1
+  mov rdi, 1
+  mov rsi, nova_linha
+  mov rdx, 1
+  syscall
 
   ; Imprime mensagem e lê coordenadas do ponto B
   mov rax, 1
-	mov rdi, 1
-	mov rsi, msg_B
-	mov rdx, tam_B
-	syscall
+  mov rdi, 1
+  mov rsi, msg_B
+  mov rdx, tam_B
+  syscall
 
   mov rax, 0
   mov rdi, 0
@@ -108,18 +108,18 @@ _start:
   mov rdx, 8
   syscall
 
-	mov rax, 1
-	mov rdi, 1
-	mov rsi, nova_linha
-	mov rdx, 1
-	syscall
+  mov rax, 1
+  mov rdi, 1
+  mov rsi, nova_linha
+  mov rdx, 1
+  syscall
 
   ; Imprime mensagem e lê coordenadas do ponto C
   mov rax, 1
-	mov rdi, 1
-	mov rsi, msg_C
-	mov rdx, tam_C
-	syscall
+  mov rdi, 1
+  mov rsi, msg_C
+  mov rdx, tam_C
+  syscall
 
   mov rax, 0
   mov rdi, 0
@@ -153,6 +153,6 @@ _start:
   ; Testa se é escaleno e imprime mensagem
 
   ; Finaliza o programa
-	mov rax, 60
-	xor rdi, rdi
-	syscall
+  mov rax, 60
+  xor rdi, rdi
+  syscall
