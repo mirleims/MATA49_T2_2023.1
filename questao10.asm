@@ -23,7 +23,7 @@ section .data
   tam_C equ $-msg_C
 
   ; Mensagens para o resultado
-	msg_equilatero db 'O triangulo eh equilatero', 10
+  msg_equilatero db 'O triangulo eh equilatero', 10
   tam_equilatero equ $-msg_equilatero
 
   msg_isosceles db 'O triangulo eh isosceles', 10
