@@ -7,6 +7,11 @@
 ;         Elis Alcantara
 ;         Monique Silva
 
+extern printf
+extern scanf
+extern sqrt
+extern pow
+
 section .data
   ; Mensagem inicial
   mensagem db 'Insira a coordenada para os pontos A, B e C: ', 10
@@ -32,25 +37,49 @@ section .data
   msg_escaleno db 'O triangulo eh escaleno', 10
   tam_escaleno equ $-msg_escaleno
 
-  msg_nao_triangulo db 'Nao eh um triangulo', 10
-  tam_nao_triangulo equ $-msg_nao_triangulo
-
   ; Imprimir linha em branco "\n"
   nova_linha db 10
 
-section .bss
-  ; Variáveis para armazenar as coordenadas
-  x1 resq 1
-  y1 resq 1
-  x2 resq 1
-  y2 resq 1
-  x3 resq 1
-  y3 resq 1
+  ; Variáveis para cálculo da distância em ponto flutuante
+  x1 dq 0.0
+  y1 dq 0.0
+  x2 dq 0.0
+  y2 dq 0.0
+  x3 dq 0.0
+  y3 dq 0.0
+
+  ; Formato para escrita de entrada ou saída
+  fmt_input db "%lf", 0
+  fmt_distancia db "%.2lf", 10, 0
 
 section .text
-  global _start
+global main
 
-_start:
+  ; Função para calcular a distância entre dois pontos
+  ; Fórmula => √((x2 - x1)^2 + (y2 - y1)^2)
+calc_distancia:
+  ; Calcular primeira expressão => (x2 - x1)^2
+  movsd xmm3, xmm6
+  subsd xmm3, xmm1
+  mulsd xmm3, xmm3
+
+  ; Calcular segunda expressão => (y2 - y1)^2
+  movsd xmm4, xmm7
+  subsd xmm4, xmm2
+  mulsd xmm4, xmm4
+
+  ; Calcular soma => (x2 - x1)^2 + (y2 - y1)^2
+  addsd xmm3, xmm4
+
+  ; Calcular raiz quadrada => sqrt((x2 - x1)^2 + (y2 - y1)^2)
+  sqrtsd xmm0, xmm3
+
+  ret
+
+main:
+  push rbp
+  mov rbp, rsp
+
   ; Imprimir mensagem inicial
   mov rax, 1
   mov rdi, 1
@@ -71,17 +100,13 @@ _start:
   mov rdx, tam_A
   syscall
 
-  mov rax, 0
-  mov rdi, 0
+  mov rdi, fmt_input
   mov rsi, x1
-  mov rdx, 8
-  syscall
+  call scanf
 
-  mov rax, 0
-  mov rdi, 0
+  mov rdi, fmt_input
   mov rsi, y1
-  mov rdx, 8
-  syscall
+  call scanf
 
   mov rax, 1
   mov rdi, 1
@@ -96,17 +121,13 @@ _start:
   mov rdx, tam_B
   syscall
 
-  mov rax, 0
-  mov rdi, 0
+  mov rdi, fmt_input
   mov rsi, x2
-  mov rdx, 8
-  syscall
+  call scanf
 
-  mov rax, 0
-  mov rdi, 0
+  mov rdi, fmt_input
   mov rsi, y2
-  mov rdx, 8
-  syscall
+  call scanf
 
   mov rax, 1
   mov rdi, 1
@@ -121,17 +142,13 @@ _start:
   mov rdx, tam_C
   syscall
 
-  mov rax, 0
-  mov rdi, 0
+  mov rdi, fmt_input
   mov rsi, x3
-  mov rdx, 8
-  syscall
+  call scanf
 
-  mov rax, 0
-  mov rdi, 0
+  mov rdi, fmt_input
   mov rsi, y3
-  mov rdx, 8
-  syscall
+  call scanf
 
   mov rax, 1
   mov rdi, 1
@@ -139,20 +156,37 @@ _start:
   mov rdx, 1
   syscall
 
-  ; ---- To-do ----
-  ; Calcular a distância entre os pontos
-  ; Distância entre A e B
-  ; Distância entre A e C
-  ; Distância entre B e C
+  ; Distancia entre os pontos A e B
+  movsd xmm1, qword [x1]
+  movsd xmm2, qword [y1]
+  movsd xmm6, qword [x2]
+  movsd xmm7, qword [y2]
+  call calc_distancia
+  mov rdi, fmt_distancia
+  movsd xmm0, xmm0
+  call printf
 
-  ; Testa se é um triângulo
-  ; Se não for, imprime mensagem e finaliza o programa
+  ; Distancia entre os pontos A e C
+  movsd xmm1, qword [x1]
+  movsd xmm2, qword [y1]
+  movsd xmm6, qword [x3]
+  movsd xmm7, qword [y3]
+  call calc_distancia
+  mov rdi, fmt_distancia
+  movsd xmm0, xmm0
+  call printf
 
-  ; Testa se é equilátero e imprime mensagem
-  ; Testa se é isósceles e imprime mensagem
-  ; Testa se é escaleno e imprime mensagem
+  ; Distancia entre os pontos B e C
+  movsd xmm1, qword [x2]
+  movsd xmm2, qword [y2]
+  movsd xmm6, qword [x3]
+  movsd xmm7, qword [y3]
+  call calc_distancia
+  mov rdi, fmt_distancia
+  movsd xmm0, xmm0
+  call printf
 
-  ; Finaliza o programa
-  mov rax, 60
-  xor rdi, rdi
-  syscall
+  ; Encerrar programa
+  mov rsp, rbp
+  pop rbp
+  ret
