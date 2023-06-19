@@ -1,6 +1,6 @@
 ;Equipe 09
 ;Verificar tipo de um triângulo
-;Felipe, Lucas Souza, Vinicius Coutinho
+;Felipe Freire, Lucas Souza, Vinicius Coutinho
 
 WORD_SIZE equ 2
 
