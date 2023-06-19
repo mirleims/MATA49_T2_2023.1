@@ -1,3 +1,5 @@
+WORD_SIZE equ 2
+
 section .data
     lado1 dq 0
     lado2 dq 0
@@ -16,9 +18,9 @@ section .data
     tamanhoStr_equilatero equ $-equilatero
 
 section .bss
-    input_lado1 resb 2
-    input_lado2 resb 2
-    input_lado3 resb 2
+    input_lado1 resb WORD_SIZE
+    input_lado2 resb WORD_SIZE
+    input_lado3 resb WORD_SIZE
 
 section .text
     global main
@@ -145,7 +147,7 @@ print_string:
 ler_string:
     mov rax, 0
     mov rdi, 0
-    mov rdx, 2
+    mov rdx, WORD_SIZE
     syscall
     ret
 

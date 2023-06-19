@@ -16,4 +16,4 @@ O programa desenvolvido em assembly retorna o tipo de triângulo, dado 3 lados e
 2. Logo depois verifica se os lados lidos compõem de fato um triângulo (desigualdade triangular);
 3. Por último ele verifica qual o tipo de triângulo (isósceles, escaleno ou retangular).
 
-> OBS.: O programa aceita apenas a entrada de números positivos de dois dígitos.
+> OBS.: O programa, inicialmente, está configurado para receber apenas números naturais de 1 dígito. Se desejar aumentar  a quantidade de dígitos de entrada, você deve alterar *WORD_SIZE equ 2* para a quantidade desejada somado de 1, ou seja, se quiser uma entrada de 3 dígitos, você deve colocar *WORD_SIZE equ 4*. Além disso, é imprescindível que a entrada tenha sempre a quantidade de dígitos estipulada, logo, se a entrada for de dois dígitos, o número **9** deve ser entrado como **09**.
