@@ -15,7 +15,16 @@ int main() {
 
     printf("Digite o segundo número: ");
     scanf("%f", &num2);
-    printf("A soma entre num1 e num2 é: %f\n", somar(num1, num2));
+
+    printf("%.2f + %.2f = %.2f\n", num1, num2, somar(num1, num2));
+    printf("%.2f - %.2f = %.2f\n", num1, num2, subtrair(num1, num2));
+    printf("%.2f x %.2f = %.2f\n", num1, num2, multiplicar(num1, num2));
+
+    if (num2 != 0) {
+        printf("%.2f / %.2f = %.2f\n", num1, num2, dividir(num1, num2));
+    } else {
+        printf("Erro: divisão por zero\n");
+    }
 
     // printf("Escolha a operação:\n");
     // printf("1 - Soma\n");
