@@ -20,7 +20,9 @@ As funções foram escritas em assembly (`fibonacci.asm`) e em C (`fibonacci.c`)
 
 ## Resultados
 
-Não houve diferença significativa entre os tempos de execução das duas funções. Ambas tiveram o mesmo tempo de execução, o que sugere que os dois códigos gerados pelo compilador são equivalentes. O mesmo não pôde ser dito para a função fatorial (questão 4), onde a função em assembly foi mais rápida que a função em C.
+Sem a otimização do compilador, a função em assembly é mais rápida que a função em C. Ao adicionar a otimização `-O3` do compilador, a função em C se tornou mais rápida que a função em assembly.
+
+As vezes, ligar a otimização já é suficiente para que a função em C seja mais rápida que a função em assembly não sendo necessário reescrever a função em C para assembly.
 
 ## Autoria
 
