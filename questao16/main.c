@@ -1,3 +1,5 @@
+// Erick Suzart
+
 #include <stdio.h>
 
 extern float somar(float n1, float n2);

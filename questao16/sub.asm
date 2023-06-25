@@ -1,4 +1,4 @@
-; Erick Suzuart
+; Erick Suzart
 
 section .text
     global subtrair

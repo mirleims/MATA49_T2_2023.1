@@ -1,3 +1,5 @@
+; Erick Suzart
+
 section .text
     global somar
 
