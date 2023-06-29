@@ -20,13 +20,14 @@ section .text
     global _start
  
 _start:
-    ; Leitura de dados
+    ; Exibe o texto1 no terminal
     mov rdx, mensagem_len
     mov rsi, mensagem
     mov rdi, 1
     mov rax, 1
     syscall
     
+    ; Solicita a entrada do usuário
     mov rdx, input_len
     mov rsi, input
     mov rdi, 0
