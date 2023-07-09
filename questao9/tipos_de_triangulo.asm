@@ -52,8 +52,7 @@ main:
     call string_to_int
     mov qword [lado3], rax
 
-    jmp analisa_se_e_triangulo
-    call tipo_de_triangulo
+    call analisa_se_e_triangulo
 
     jmp exit
 
